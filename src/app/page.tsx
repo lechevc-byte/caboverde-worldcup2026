@@ -151,19 +151,50 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
-          <FadeUp delay={0.3}>
-            <div className="mt-16 border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 md:p-12 max-w-2xl">
-              <p className="section-label mb-3">Package</p>
-              <h3 className="font-bebas text-3xl">PRAIA &rarr; MIAMI</h3>
-              <p className="font-bebas text-4xl text-cv-gold mt-2">~2,000 EUR</p>
-              <ul className="mt-4 space-y-2 text-white/80 text-sm">
-                <li>&bull; {t.home.packageCharter}</li>
-                <li>&bull; {t.home.packageHotel}</li>
-                <li>&bull; {t.home.packageAccess}</li>
-              </ul>
-              <Link href="/events" className="btn-primary mt-6">{t.home.learnMore}</Link>
-            </div>
-          </FadeUp>
+          {/* Packages row */}
+          <div className="mt-16 grid md:grid-cols-3 gap-px">
+            <FadeUp delay={0.3}>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
+                <h3 className="font-bebas text-2xl">PACKAGE DEPUIS PRAIA</h3>
+                <div className="ticket-dash my-4 w-full" />
+                <ul className="space-y-1 text-white/80 text-sm">
+                  <li>4 nuits — $600</li>
+                  <li>Vol Praia–Miami — $1,150</li>
+                  <li>Ticket Standard — $75</li>
+                  <li>Ticket Business — $150</li>
+                  <li>Ticket VIP — $250</li>
+                </ul>
+                <p className="mt-4 font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold">
+                  Co&ucirc;t estim&eacute; VIP: ~$2,000
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.4}>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
+                <h3 className="font-bebas text-2xl">CHARTER PRAIA–MIAMI–PRAIA</h3>
+                <div className="ticket-dash my-4 w-full" />
+                <ul className="space-y-1 text-white/80 text-sm">
+                  <li>18.06 – 22.06</li>
+                  <li>H&ocirc;tel chambre double ou B&amp;B — $150/nuit</li>
+                  <li>Event: $60 &agrave; $300</li>
+                </ul>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.5}>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bebas text-2xl">TICKETS</h3>
+                  <div className="ticket-dash my-4 w-full" />
+                  <ul className="space-y-1 text-white/80 text-sm">
+                    <li>Standard — $50 / $60</li>
+                    <li>Business — $150 / $180</li>
+                    <li>VIP Lounge — $300 / $350</li>
+                  </ul>
+                </div>
+                <Link href="/events" className="btn-primary mt-6 text-center">{t.home.learnMore}</Link>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 

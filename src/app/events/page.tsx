@@ -135,65 +135,154 @@ export default function EventsPage() {
       </section>
 
       {/* ── TICKETS ── */}
-      <section className="bg-navy py-20 px-6 md:px-12">
+      <section className="bg-dark py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <p className="section-label mb-4">{t.events.ticketsLabel}</p>
             <h2 className="section-title">{t.events.ticketsTitle}</h2>
           </FadeUp>
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            {tickets.map((tk, i) => (
-              <FadeUp key={tk.tier} delay={i * 0.1}>
-                <div className={`ticket-card border ${tk.featured ? "border-cv-gold/50 bg-white/[0.04]" : "border-white/15"} p-8 flex flex-col relative overflow-hidden`}>
-                  {tk.featured && (
-                    <span className="absolute top-0 right-0 bg-cv-gold text-navy font-barlow-cond font-bold text-xs uppercase tracking-wider px-3 py-1">
-                      {t.events.recommended}
-                    </span>
-                  )}
-                  <h3 className="font-bebas text-3xl">{tk.tier}</h3>
-                  <div className="mt-4 flex gap-6">
-                    <div>
-                      <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
-                      <p className="font-bebas text-2xl text-cv-gold">{tk.priceAtl}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
-                      <p className="font-bebas text-2xl text-cv-gold">{tk.priceMia}</p>
-                    </div>
-                  </div>
-                  <div className="ticket-dash my-6 w-full" />
-                  <ul className="space-y-2 flex-1">
-                    {tk.features.map((f) => (
-                      <li key={f} className="text-white/75 text-sm flex items-start gap-2">
-                        <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="#registration" className={`mt-8 text-center ${tk.featured ? "btn-primary" : "btn-secondary"}`}>
-                    {t.events.bookNow}
-                  </Link>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── PACKAGE ── */}
-      <section className="bg-dark py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp>
-            <div className="border border-cv-gold/40 bg-white/[0.03] p-8 md:p-12 max-w-2xl">
-              <p className="section-label mb-3">Package</p>
-              <h3 className="font-bebas text-3xl">PRAIA &rarr; MIAMI</h3>
-              <p className="font-bebas text-4xl text-cv-gold mt-2">~2,000 EUR</p>
-              <ul className="mt-4 space-y-2 text-white/80 text-sm">
-                <li>&bull; {t.home.packageCharter}</li>
-                <li>&bull; {t.home.packageHotel}</li>
-                <li>&bull; {t.home.packageAccess}</li>
-              </ul>
-            </div>
-          </FadeUp>
+          {/* Row 1 — 3 main tickets */}
+          <div className="mt-12 grid md:grid-cols-3 gap-px">
+            {/* VIP Lounge */}
+            <FadeUp delay={0}>
+              <div className="ticket-card border border-cv-gold/50 bg-white/[0.04] p-8 flex flex-col relative overflow-hidden h-full">
+                <span className="absolute top-0 right-0 bg-cv-red text-white font-barlow-cond font-bold text-xs uppercase tracking-wider px-3 py-1">Limited</span>
+                <h3 className="font-bebas text-3xl">VIP LOUNGE</h3>
+                <div className="mt-4 flex gap-6">
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$300</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$350</p>
+                  </div>
+                </div>
+                <div className="ticket-dash my-6 w-full" />
+                <ul className="space-y-2 flex-1">
+                  {["Full access all zones", "VIP lounge", "Priority seating", "Gift pack", "Private networking", "Potential player/delegation proximity"].map((f) => (
+                    <li key={f} className="text-white/75 text-sm flex items-start gap-2">
+                      <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-white/50 text-xs mt-4 italic">Target: HNWIs, Executives, Sponsors, Diaspora leaders</p>
+                <Link href="#registration" className="btn-primary mt-6 text-center">{t.events.bookNow}</Link>
+              </div>
+            </FadeUp>
+
+            {/* Business */}
+            <FadeUp delay={0.1}>
+              <div className="ticket-card border border-white/15 p-8 flex flex-col h-full">
+                <h3 className="font-bebas text-3xl">BUSINESS</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">Investment &amp; Networking</p>
+                <div className="mt-4 flex gap-6">
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$150</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$180</p>
+                  </div>
+                </div>
+                <div className="ticket-dash my-6 w-full" />
+                <ul className="space-y-2 flex-1">
+                  {["Business & Deal Room access", "Structured networking", "Main stage access"].map((f) => (
+                    <li key={f} className="text-white/75 text-sm flex items-start gap-2">
+                      <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-white/50 text-xs mt-4 italic">Target: Entrepreneurs, SMEs, Professionals, Investors</p>
+                <Link href="#registration" className="btn-secondary mt-6 text-center">{t.events.bookNow}</Link>
+              </div>
+            </FadeUp>
+
+            {/* Standard */}
+            <FadeUp delay={0.2}>
+              <div className="ticket-card border border-white/15 p-8 flex flex-col h-full">
+                <h3 className="font-bebas text-3xl">STANDARD</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">Experience Access</p>
+                <div className="mt-4 flex gap-6">
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$50</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$60</p>
+                  </div>
+                </div>
+                <div className="ticket-dash my-6 w-full" />
+                <ul className="space-y-2 flex-1">
+                  {["Main stage", "Smart Experience Zone", "Cultural activations"].map((f) => (
+                    <li key={f} className="text-white/75 text-sm flex items-start gap-2">
+                      <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-white/50 text-xs mt-4 italic">Target: Diaspora general audience, Young professionals, Community</p>
+                <Link href="#registration" className="btn-secondary mt-6 text-center">{t.events.bookNow}</Link>
+              </div>
+            </FadeUp>
+          </div>
+
+          {/* Row 2 — 3 extra blocks */}
+          <div className="mt-px grid md:grid-cols-3 gap-px">
+            {/* VIP Table Packages */}
+            <FadeUp delay={0.3}>
+              <div className="border border-cv-gold/25 p-8 h-full">
+                <h3 className="font-bebas text-2xl">VIP TABLE PACKAGES</h3>
+                <div className="ticket-dash my-4 w-full" />
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">Atlanta</p>
+                    <p className="text-white/75 text-sm mt-1">5 seats — $1,500</p>
+                    <p className="text-white/75 text-sm">10 seats — $3,000</p>
+                  </div>
+                  <div>
+                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">Miami</p>
+                    <p className="text-white/75 text-sm mt-1">5 seats — $2,000</p>
+                    <p className="text-white/75 text-sm">10 seats — $4,000</p>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Package depuis Praia */}
+            <FadeUp delay={0.4}>
+              <div className="border border-cv-gold/25 p-8 h-full">
+                <h3 className="font-bebas text-2xl">PACKAGE DEPUIS PRAIA</h3>
+                <div className="ticket-dash my-4 w-full" />
+                <ul className="space-y-1 text-white/75 text-sm">
+                  <li>4 nuits — $600</li>
+                  <li>Vol Praia–Miami — $1,150</li>
+                  <li>Ticket Standard — $75</li>
+                  <li>Ticket Business — $150</li>
+                  <li>Ticket VIP — $250</li>
+                  <li>Boot — $10,000</li>
+                </ul>
+                <p className="mt-4 font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold">
+                  Co&ucirc;t estim&eacute; VIP: ~$2,000
+                </p>
+              </div>
+            </FadeUp>
+
+            {/* Charter flight */}
+            <FadeUp delay={0.5}>
+              <div className="border border-cv-gold/25 p-8 h-full">
+                <h3 className="font-bebas text-2xl">CHARTER PRAIA–MIAMI–PRAIA</h3>
+                <div className="ticket-dash my-4 w-full" />
+                <ul className="space-y-1 text-white/75 text-sm">
+                  <li>18.06 – 22.06</li>
+                  <li>H&ocirc;tel chambre double ou B&amp;B — $150/nuit</li>
+                  <li>Event: $60 &agrave; $300</li>
+                </ul>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 

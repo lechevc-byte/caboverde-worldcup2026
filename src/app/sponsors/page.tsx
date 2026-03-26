@@ -108,18 +108,48 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      {/* ── ACTIVATION ── */}
-      <section className="bg-navy py-16 px-6 md:px-12">
+      {/* ── ACTIVATION SPONSORS ── */}
+      <section className="bg-dark py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <FadeUp>
-            <p className="section-label mb-4">{t.sponsors.activationLabel}</p>
-            <h2 className="section-title">{t.sponsors.activationTitle}</h2>
-            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {activations.map((a) => (
-                <div key={a} className="border border-white/15 p-5 hover:border-cv-gold/30 transition-colors">
-                  <p className="font-barlow-cond font-bold uppercase tracking-wider text-cv-white text-sm">{a}</p>
+            <div className="border border-cv-gold/25 p-8 md:p-10 relative">
+              <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "#F5A623" }} />
+              <h3 className="font-bebas text-3xl mt-2">ACTIVATION SPONSORS — ~5K$</h3>
+              <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">Experience Partners</p>
+              <p className="text-white/70 text-sm mt-2">Special category for interactive sponsor activations</p>
+              <p className="font-bebas text-xl text-cv-gold mt-4">€5,000 <span className="text-white/60 text-sm font-barlow">depending on activation</span></p>
+
+              <div className="mt-8">
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-white/60 mb-3">Examples</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Technology Booth", "Media Booth", "Photo Booth", "Food Pavilion", "Beverage Partner", "Merchandise Partner"].map((a) => (
+                    <span key={a} className="border border-white/15 px-4 py-2 text-white/80 text-sm">{a}</span>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="mt-8">
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-white/60 mb-3">Benefits</p>
+                <ul className="space-y-2">
+                  {[
+                    "Exclusive category branding",
+                    "Interactive brand activation with attendees",
+                    "Product sampling / demonstrations",
+                    "Logo on booth signage and event map",
+                    "Inclusion in event promotions",
+                  ].map((b) => (
+                    <li key={b} className="text-white/75 text-sm flex items-start gap-2">
+                      <span className="text-cv-gold mt-0.5">&#10022;</span> {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="mt-8 text-white/50 text-xs leading-relaxed italic">
+                These activations support the fan-zone style experience, including raffles, merchandise, storytelling booths, and interactive sponsor rows.
+              </p>
+
+              <Link href="#contact-sponsor" className="btn-secondary mt-6 text-center text-sm inline-block">Apply Now</Link>
             </div>
           </FadeUp>
         </div>
