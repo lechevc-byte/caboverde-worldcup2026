@@ -35,27 +35,22 @@ export default function Home() {
     <>
       {/* ── HERO ── */}
       <section
-        className="hero-bg min-h-screen flex items-center overflow-hidden pt-16"
-        style={{ backgroundImage: "url('/img/hero-stadium.jpg')" }}
+        className="relative h-screen flex items-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/img/hero-stadium.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        {/* pitch texture */}
-        <div className="absolute inset-0 pitch-texture pointer-events-none z-[2]" />
+        {/* Overlay sombre */}
+        <div className="absolute inset-0 bg-black/45 z-[1]" />
 
-        {/* US flag ghost */}
         <div
-          className="absolute top-0 right-0 w-1/2 h-full pointer-events-none z-[2]"
-          style={{
-            background: "repeating-linear-gradient(180deg, rgba(207,32,39,0.05) 0, rgba(207,32,39,0.05) 30px, rgba(255,255,255,0.04) 30px, rgba(255,255,255,0.04) 60px)",
-          }}
-        />
-
-        {/* Ball deco */}
-        <div className="absolute right-[10%] top-1/3 ball-float pointer-events-none z-[3]">
-          <div className="w-32 h-32 rounded-full border-2 border-cv-gold/30" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
-          <p className="section-label mb-6">{t.home.eyebrow}</p>
+          className="relative z-[2] w-full flex flex-col justify-center text-left"
+          style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
+        >
+          <p className="section-label mb-4">{t.home.eyebrow}</p>
 
           {heroLines.map((line, i) => (
             <motion.h1
@@ -64,7 +59,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="font-bebas leading-[0.92]"
-              style={{ fontSize: "clamp(4.5rem, 11vw, 9rem)" }}
+              style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
             >
               {line === "PRIMEIRA" ? (
                 <span className="text-transparent" style={{ WebkitTextStroke: "2px rgba(245,166,35,0.7)" }}>{line}</span>
@@ -80,7 +75,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-8 max-w-lg text-cv-white/80 font-barlow text-[0.95rem] leading-[1.72]"
+            className="mt-6 max-w-lg text-cv-white/80 font-barlow text-[0.95rem] leading-[1.72]"
           >
             {t.home.subtitle}
           </motion.p>
@@ -89,7 +84,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-6 flex flex-wrap gap-4"
           >
             <Link href="/events" className="btn-primary">{t.home.ctaPrimary}</Link>
             <Link href="/sponsors" className="btn-secondary">{t.home.ctaSecondary}</Link>

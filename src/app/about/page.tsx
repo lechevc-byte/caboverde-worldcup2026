@@ -89,9 +89,7 @@ export default function AboutPage() {
       {/* ── LEGACY ── */}
       <section
         className="relative py-20 px-6 md:px-12 overflow-hidden"
-        style={{
-          background: `linear-gradient(rgba(26,61,31,0.55), rgba(26,61,31,0.55)), url('/img/stadium-aerial.png') center/cover no-repeat`,
-        }}
+        style={{ background: "var(--dark)" }}
       >
         <div className="max-w-7xl mx-auto">
           <FadeUp>
