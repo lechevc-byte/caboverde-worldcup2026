@@ -1,0 +1,240 @@
+"use client";
+
+import Link from "next/link";
+import FadeUp from "@/components/FadeUp";
+import { useI18n } from "@/i18n/context";
+
+export default function EventsPage() {
+  const { t } = useI18n();
+
+  const cities = [
+    {
+      name: "ATLANTA",
+      dates: "June 15, 2026",
+      border: "border-cv-gold",
+      desc: t.events.atlantaDesc,
+      badge: null,
+      img: "/img/atlanta.jpg",
+    },
+    {
+      name: "MIAMI",
+      dates: "June 20-21, 2026",
+      border: "border-cv-red",
+      desc: t.events.miamiDesc,
+      badge: t.events.badge2days,
+      img: "/img/miami.jpg",
+    },
+    {
+      name: "HOUSTON",
+      dates: "June 26, 2026",
+      border: "border-cv-gold",
+      desc: t.events.houstonDesc,
+      badge: null,
+      img: "/img/houston.jpg",
+    },
+  ];
+
+  const zones = [
+    { icon: "\u{1F3DF}", name: t.events.zone1, desc: t.events.zone1d },
+    { icon: "\u{1F91D}", name: t.events.zone2, desc: t.events.zone2d },
+    { icon: "\u{1F4A1}", name: t.events.zone3, desc: t.events.zone3d },
+    { icon: "\u2B50", name: t.events.zone4, desc: t.events.zone4d },
+    { icon: "\u{1F6CD}", name: t.events.zone5, desc: t.events.zone5d },
+    { icon: "\u{1F4F8}", name: t.events.zone6, desc: t.events.zone6d },
+  ];
+
+  const tickets = [
+    {
+      tier: t.events.standard,
+      priceAtl: "$50",
+      priceMia: "$60",
+      features: [t.events.stdF1, t.events.stdF2, t.events.stdF3],
+      featured: false,
+    },
+    {
+      tier: t.events.business,
+      priceAtl: "$150",
+      priceMia: "$180",
+      features: [t.events.bizF1, t.events.bizF2, t.events.bizF3, t.events.bizF4],
+      featured: true,
+    },
+    {
+      tier: t.events.vip,
+      priceAtl: "$300",
+      priceMia: "$350",
+      features: [t.events.vipF1, t.events.vipF2, t.events.vipF3, t.events.vipF4],
+      featured: false,
+    },
+  ];
+
+  return (
+    <>
+      {/* ── HERO ── */}
+      <section
+        className="hero-bg min-h-[55vh] flex items-center pt-16 overflow-hidden"
+        style={{ backgroundImage: "url('/img/ball-pitch.jpg')" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
+          <p className="section-label mb-4">{t.events.heroLabel}</p>
+          <h1 className="font-bebas leading-[0.92]" style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}>
+            {t.events.heroTitle}
+          </h1>
+          <p className="mt-6 max-w-lg text-cv-white/80 text-[0.95rem] leading-[1.72]">{t.events.heroText}</p>
+        </div>
+      </section>
+
+      {/* ── CITY CARDS ── */}
+      <section className="bg-navy py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto space-y-6">
+          {cities.map((c, i) => (
+            <FadeUp key={c.name} delay={i * 0.1}>
+              <div className={`border-l-[3px] ${c.border} flex flex-col md:flex-row overflow-hidden bg-white/[0.04]`}>
+                {/* City image */}
+                <div
+                  className="w-full md:w-56 h-44 md:h-auto shrink-0"
+                  style={{ background: `url('${c.img}') center/cover no-repeat` }}
+                />
+                <div className="flex-1 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-bebas text-3xl">{c.name}</h3>
+                      {c.badge && (
+                        <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-3 py-1 text-white">{c.badge}</span>
+                      )}
+                    </div>
+                    <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">{c.dates}</p>
+                    <p className="text-white/75 text-sm mt-2 max-w-lg leading-relaxed">{c.desc}</p>
+                  </div>
+                  <Link href="#registration" className="btn-primary shrink-0 text-center">{t.events.bookNow}</Link>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </section>
+
+      {/* ── ZONES ── */}
+      <section className="bg-dark py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp>
+            <p className="section-label mb-4">{t.events.zonesLabel}</p>
+            <h2 className="section-title">{t.events.zonesTitle}</h2>
+          </FadeUp>
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-px">
+            {zones.map((z, i) => (
+              <FadeUp key={z.name} delay={i * 0.08}>
+                <div className="border border-white/10 p-8 hover:-translate-y-1 transition-transform h-full">
+                  <span className="text-3xl">{z.icon}</span>
+                  <h3 className="font-barlow-cond font-bold uppercase tracking-wider text-cv-white mt-4">{z.name}</h3>
+                  <p className="text-white/70 text-sm mt-2 leading-relaxed">{z.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TICKETS ── */}
+      <section className="bg-navy py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp>
+            <p className="section-label mb-4">{t.events.ticketsLabel}</p>
+            <h2 className="section-title">{t.events.ticketsTitle}</h2>
+          </FadeUp>
+          <div className="mt-12 grid md:grid-cols-3 gap-8">
+            {tickets.map((tk, i) => (
+              <FadeUp key={tk.tier} delay={i * 0.1}>
+                <div className={`ticket-card border ${tk.featured ? "border-cv-gold/50 bg-white/[0.04]" : "border-white/15"} p-8 flex flex-col relative overflow-hidden`}>
+                  {tk.featured && (
+                    <span className="absolute top-0 right-0 bg-cv-gold text-navy font-barlow-cond font-bold text-xs uppercase tracking-wider px-3 py-1">
+                      {t.events.recommended}
+                    </span>
+                  )}
+                  <h3 className="font-bebas text-3xl">{tk.tier}</h3>
+                  <div className="mt-4 flex gap-6">
+                    <div>
+                      <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
+                      <p className="font-bebas text-2xl text-cv-gold">{tk.priceAtl}</p>
+                    </div>
+                    <div>
+                      <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
+                      <p className="font-bebas text-2xl text-cv-gold">{tk.priceMia}</p>
+                    </div>
+                  </div>
+                  <div className="ticket-dash my-6 w-full" />
+                  <ul className="space-y-2 flex-1">
+                    {tk.features.map((f) => (
+                      <li key={f} className="text-white/75 text-sm flex items-start gap-2">
+                        <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="#registration" className={`mt-8 text-center ${tk.featured ? "btn-primary" : "btn-secondary"}`}>
+                    {t.events.bookNow}
+                  </Link>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PACKAGE ── */}
+      <section className="bg-dark py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp>
+            <div className="border border-cv-gold/40 bg-white/[0.03] p-8 md:p-12 max-w-2xl">
+              <p className="section-label mb-3">Package</p>
+              <h3 className="font-bebas text-3xl">PRAIA &rarr; MIAMI</h3>
+              <p className="font-bebas text-4xl text-cv-gold mt-2">~2,000 EUR</p>
+              <ul className="mt-4 space-y-2 text-white/80 text-sm">
+                <li>&bull; {t.home.packageCharter}</li>
+                <li>&bull; {t.home.packageHotel}</li>
+                <li>&bull; {t.home.packageAccess}</li>
+              </ul>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ── REGISTRATION FORM ── */}
+      <section id="registration" className="bg-navy py-20 px-6 md:px-12">
+        <div className="max-w-2xl mx-auto">
+          <FadeUp>
+            <p className="section-label mb-4">{t.events.regLabel}</p>
+            <h2 className="section-title mb-10">{t.events.regTitle}</h2>
+          </FadeUp>
+          <FadeUp delay={0.15}>
+            <form className="grid sm:grid-cols-2 gap-4">
+              <input type="text" placeholder={t.events.firstName} required />
+              <input type="text" placeholder={t.events.lastName} required />
+              <input type="email" placeholder={t.events.email} required className="sm:col-span-2" />
+              <input type="tel" placeholder={t.events.whatsapp} />
+              <input type="text" placeholder={t.events.city} />
+              <select required className="sm:col-span-2">
+                <option value="">{t.events.ticketType}</option>
+                <option>Standard — Atlanta ($50)</option>
+                <option>Standard — Miami ($60)</option>
+                <option>Business — Atlanta ($150)</option>
+                <option>Business — Miami ($180)</option>
+                <option>VIP — Atlanta ($300)</option>
+                <option>VIP — Miami ($350)</option>
+              </select>
+              <select className="sm:col-span-2">
+                <option value="">{t.events.comingFrom}</option>
+                <option>{t.events.diasporaUSA}</option>
+                <option>{t.events.diasporaEurope}</option>
+                <option>{t.events.praiaCV}</option>
+                <option>{t.events.other}</option>
+              </select>
+              <textarea placeholder={t.events.messageOpt} rows={3} className="sm:col-span-2" />
+              <div className="sm:col-span-2">
+                <button type="submit" className="btn-primary w-full text-center">{t.events.submitReg}</button>
+              </div>
+            </form>
+          </FadeUp>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -3,25 +3,197 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --cv-blue: #003893;
+  --cv-red: #CF2027;
+  --cv-gold: #F5A623;
+  --cv-white: #F5F1E8;
+  --navy: #0A1628;
+  --dark: #030d18;
+  --turf: #1A3D1F;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy);
+  color: var(--cv-white);
+  font-family: var(--font-barlow);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ── Ticker animation ── */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker 30s linear infinite;
+}
+
+/* ── Ball float ── */
+@keyframes ballFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-24px); }
+}
+.ball-float {
+  animation: ballFloat 4s ease-in-out infinite;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--cv-red);
+  color: #fff;
+  font-family: var(--font-barlow-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.2rem;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: background 0.25s;
+}
+.btn-primary:hover { background: #e0252d; }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--cv-gold);
+  color: var(--cv-gold);
+  font-family: var(--font-barlow-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.2rem;
+  transition: all 0.25s;
+}
+.btn-secondary:hover { background: var(--cv-gold); color: var(--navy); }
+
+.btn-white {
+  display: inline-block;
+  background: var(--cv-white);
+  color: var(--cv-red);
+  font-family: var(--font-barlow-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.2rem;
+  transition: all 0.25s;
+}
+.btn-white:hover { background: var(--cv-gold); color: var(--navy); }
+
+/* ── Section label ── */
+.section-label {
+  font-family: var(--font-barlow-cond);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cv-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--cv-gold);
+}
+
+/* ── Section titles ── */
+.section-title {
+  font-family: var(--font-bebas);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--cv-white);
+}
+
+/* ── Inputs ── */
+input, textarea, select {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0;
+  color: var(--cv-white);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-barlow);
+  font-size: 0.9rem;
+  width: 100%;
+  transition: border-color 0.25s;
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(245,241,232,0.45);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--cv-gold);
+}
+select option { background: var(--navy); }
+
+/* ── Ticket dashed line ── */
+.ticket-dash {
+  background: repeating-linear-gradient(to right, rgba(245,241,232,0.3) 0, rgba(245,241,232,0.3) 8px, transparent 8px, transparent 16px);
+  height: 1px;
+}
+
+/* ── Ticket circle cutouts ── */
+.ticket-card { position: relative; }
+.ticket-card::before,
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--navy);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-card::before { left: -10px; }
+.ticket-card::after { right: -10px; }
+
+/* pitch texture */
+.pitch-texture {
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,0.016) 0, rgba(255,255,255,0.016) 2px, transparent 2px, transparent 40px);
+}
+
+/* ── Hero with background image ── */
+.hero-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(3,13,24,0.93) 0%,
+    rgba(10,22,40,0.82) 50%,
+    rgba(10,22,40,0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Faded bg image section ── */
+.bg-image-faded {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.bg-image-faded::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-image-faded > * {
+  position: relative;
+  z-index: 1;
 }
