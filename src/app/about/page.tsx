@@ -25,7 +25,7 @@ export default function AboutPage() {
       {/* ── HERO ── */}
       <section
         className="hero-bg min-h-[55vh] flex items-center pt-16 overflow-hidden"
-        style={{ backgroundImage: "url('/img/players-celebrate.jpg')" }}
+        style={{ backgroundImage: "url('/img/players-celebrate.png')" }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
           <p className="section-label mb-4">{t.about.heroLabel}</p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
       <section
         className="relative py-20 px-6 md:px-12 overflow-hidden"
         style={{
-          background: `linear-gradient(rgba(26,61,31,0.9), rgba(26,61,31,0.9)), url('/img/stadium-aerial.jpg') center/cover no-repeat`,
+          background: `linear-gradient(rgba(26,61,31,0.55), rgba(26,61,31,0.55)), url('/img/stadium-aerial.png') center/cover no-repeat`,
         }}
       >
         <div className="max-w-7xl mx-auto">

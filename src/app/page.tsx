@@ -137,7 +137,7 @@ export default function Home() {
       <section
         className="relative py-24 px-6 md:px-12 overflow-hidden"
         style={{
-          background: `linear-gradient(rgba(26,61,31,0.88), rgba(26,61,31,0.88)), url('/img/fans-celebrate.jpg') center/cover no-repeat`,
+          background: `linear-gradient(rgba(26,61,31,0.88), rgba(26,61,31,0.88)), url('/img/fans-celebrate.png') center/cover no-repeat`,
         }}
       >
         <div className="max-w-7xl mx-auto">

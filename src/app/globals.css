@@ -7,8 +7,8 @@
   --cv-red: #CF2027;
   --cv-gold: #F5A623;
   --cv-white: #F5F1E8;
-  --navy: #0A1628;
-  --dark: #030d18;
+  --navy: #162540;
+  --dark: #0e1f38;
   --turf: #1A3D1F;
 }
 
@@ -166,10 +166,10 @@ select option { background: var(--navy); }
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to right,
-    rgba(3,13,24,0.93) 0%,
-    rgba(10,22,40,0.82) 50%,
-    rgba(10,22,40,0.6) 100%
+    90deg,
+    rgba(3,13,24,0.58) 0%,
+    rgba(10,22,40,0.42) 50%,
+    rgba(10,22,40,0.20) 100%
   );
   z-index: 1;
   pointer-events: none;

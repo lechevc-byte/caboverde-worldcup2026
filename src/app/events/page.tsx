@@ -14,7 +14,7 @@ export default function EventsPage() {
       border: "border-cv-gold",
       desc: t.events.atlantaDesc,
       badge: null,
-      img: "/img/atlanta.jpg",
+      img: "/img/atlanta.png",
     },
     {
       name: "MIAMI",
@@ -72,7 +72,7 @@ export default function EventsPage() {
       {/* ── HERO ── */}
       <section
         className="hero-bg min-h-[55vh] flex items-center pt-16 overflow-hidden"
-        style={{ backgroundImage: "url('/img/ball-pitch.jpg')" }}
+        style={{ backgroundImage: "url('/img/event.png')" }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
           <p className="section-label mb-4">{t.events.heroLabel}</p>

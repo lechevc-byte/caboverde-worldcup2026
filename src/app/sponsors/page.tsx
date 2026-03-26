@@ -41,7 +41,7 @@ export default function SponsorsPage() {
       {/* ── HERO ── */}
       <section
         className="hero-bg min-h-[55vh] flex items-center pt-16 overflow-hidden"
-        style={{ backgroundImage: "url('/img/conference.jpg')" }}
+        style={{ backgroundImage: "url('/img/event.png')" }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
           <p className="section-label mb-4">{t.sponsors.heroLabel}</p>
