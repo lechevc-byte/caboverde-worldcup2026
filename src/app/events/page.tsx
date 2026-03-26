@@ -43,30 +43,6 @@ export default function EventsPage() {
     { icon: "\u{1F4F8}", name: t.events.zone6, desc: t.events.zone6d },
   ];
 
-  const tickets = [
-    {
-      tier: t.events.standard,
-      priceAtl: "$50",
-      priceMia: "$60",
-      features: [t.events.stdF1, t.events.stdF2, t.events.stdF3],
-      featured: false,
-    },
-    {
-      tier: t.events.business,
-      priceAtl: "$150",
-      priceMia: "$180",
-      features: [t.events.bizF1, t.events.bizF2, t.events.bizF3, t.events.bizF4],
-      featured: true,
-    },
-    {
-      tier: t.events.vip,
-      priceAtl: "$300",
-      priceMia: "$350",
-      features: [t.events.vipF1, t.events.vipF2, t.events.vipF3, t.events.vipF4],
-      featured: false,
-    },
-  ];
-
   return (
     <>
       {/* ── HERO ── */}

@@ -34,8 +34,6 @@ export default function SponsorsPage() {
     { label: t.sponsors.cLegacy, plat: true, gold: true, silver: false, bronze: false },
   ];
 
-  const activations = [t.sponsors.techBooth, t.sponsors.foodBooth, t.sponsors.photoBooth, t.sponsors.merchBooth];
-
   return (
     <>
       {/* ── HERO ── */}
