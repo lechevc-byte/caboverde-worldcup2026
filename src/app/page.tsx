@@ -155,28 +155,28 @@ export default function Home() {
           <div className="mt-16 grid md:grid-cols-3 gap-px">
             <FadeUp delay={0.3}>
               <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
-                <h3 className="font-bebas text-2xl">PACKAGE DEPUIS PRAIA</h3>
+                <h3 className="font-bebas text-2xl">{t.events.packageFromPraia}</h3>
                 <div className="ticket-dash my-4 w-full" />
                 <ul className="space-y-1 text-white/80 text-sm">
-                  <li>4 nuits — $600</li>
-                  <li>Vol Praia–Miami — $1,150</li>
-                  <li>Ticket Standard — $75</li>
-                  <li>Ticket Business — $150</li>
-                  <li>Ticket VIP — $250</li>
+                  <li>{t.events.fourNights}</li>
+                  <li>{t.events.flightPraiaMiami}</li>
+                  <li>{t.events.ticketStandard}</li>
+                  <li>{t.events.ticketBusiness}</li>
+                  <li>{t.events.ticketVip}</li>
                 </ul>
                 <p className="mt-4 font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold">
-                  Co&ucirc;t estim&eacute; VIP: ~$2,000
+                  {t.events.estimatedVipCost}
                 </p>
               </div>
             </FadeUp>
             <FadeUp delay={0.4}>
               <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
-                <h3 className="font-bebas text-2xl">CHARTER PRAIA–MIAMI–PRAIA</h3>
+                <h3 className="font-bebas text-2xl">{t.events.charterTitle}</h3>
                 <div className="ticket-dash my-4 w-full" />
                 <ul className="space-y-1 text-white/80 text-sm">
-                  <li>18.06 – 22.06</li>
-                  <li>H&ocirc;tel chambre double ou B&amp;B — $150/nuit</li>
-                  <li>Event: $60 &agrave; $300</li>
+                  <li>{t.events.charterDates}</li>
+                  <li>{t.events.doubleRoomHotel}</li>
+                  <li>{t.events.eventRange}</li>
                 </ul>
               </div>
             </FadeUp>

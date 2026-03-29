@@ -117,6 +117,19 @@ export const pt = {
     other: "Outro",
     messageOpt: "Mensagem (opcional)",
     submitReg: "Enviar inscricao",
+    // pricing cards
+    packageFromPraia: "PACOTE DESDE PRAIA",
+    fourNights: "4 noites — $600",
+    flightPraiaMiami: "Voo Praia–Miami — $1,150",
+    ticketStandard: "Bilhete Standard — $75",
+    ticketBusiness: "Bilhete Business — $150",
+    ticketVip: "Bilhete VIP — $250",
+    booth: "Stand — $10,000",
+    estimatedVipCost: "Custo estimado VIP: ~$2,000",
+    charterTitle: "CHARTER PRAIA–MIAMI–PRAIA",
+    charterDates: "18.06 – 22.06",
+    doubleRoomHotel: "Quarto duplo hotel ou B&B — $150/noite",
+    eventRange: "Evento: $60 a $300",
   },
   // Sponsors
   sponsors: {
