@@ -60,6 +60,10 @@ export const en = {
     heroTitle: "EVENTS",
     heroText:
       "Three cities, three unique experiences to celebrate Cabo Verde's first-ever World Cup participation.",
+    citiesLabel: "The journey",
+    citiesTitle: "3 CITIES · 3 MATCHES · 3 EVENTS",
+    daysLeft: "days left",
+    groupH: "GROUP H",
     // city cards
     atlantaTag: "THE OPENING MOMENT",
     atlantaMatch: "Cabo Verde vs Spain",

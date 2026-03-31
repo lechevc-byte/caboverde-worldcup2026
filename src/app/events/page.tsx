@@ -12,6 +12,7 @@ export default function EventsPage() {
       name: "ATLANTA",
       flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1EA}\u{1F1F8}",
       dates: "June 15, 2026",
+      iso: "2026-06-15",
       time: "12:00 PM ET",
       border: "border-cv-gold",
       tag: t.events.atlantaTag,
@@ -24,6 +25,7 @@ export default function EventsPage() {
       name: "MIAMI",
       flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1FA}\u{1F1FE}",
       dates: "June 20-21, 2026",
+      iso: "2026-06-21",
       time: "6:00 PM ET",
       border: "border-cv-red",
       tag: t.events.miamiTag,
@@ -36,6 +38,7 @@ export default function EventsPage() {
       name: "HOUSTON",
       flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1F8}\u{1F1E6}",
       dates: "June 25-26, 2026",
+      iso: "2026-06-25",
       time: "TBD",
       border: "border-cv-gold",
       tag: t.events.houstonTag,
@@ -71,42 +74,79 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── CITY CARDS (enhanced) ── */}
+      {/* ── 3 CITIES · 3 MATCHES · 3 EVENTS ── */}
       <section className="bg-navy py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {cities.map((c, i) => (
-            <FadeUp key={c.name} delay={i * 0.1}>
-              <div className={`border-l-[3px] ${c.border} flex flex-col md:flex-row overflow-hidden bg-white/[0.04]`}>
-                {/* City image */}
-                <div
-                  className="w-full md:w-64 h-52 md:h-auto shrink-0 relative"
-                  style={{ background: `url('${c.img}') center/cover no-repeat` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 md:to-transparent" />
-                  <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
-                    <span className="text-2xl">{c.flag}</span>
-                  </div>
-                </div>
-                <div className="flex-1 p-6 md:p-8 flex flex-col gap-3">
-                  <div>
-                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.2em] text-cv-red">{c.tag}</p>
-                    <div className="flex items-center gap-3 mt-1">
-                      <h3 className="font-bebas text-4xl">{c.name}</h3>
-                      {c.badge && (
-                        <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-3 py-1 text-white">{c.badge}</span>
-                      )}
+        <div className="max-w-7xl mx-auto">
+          <FadeUp>
+            <p className="section-label mb-4">{t.events.citiesLabel}</p>
+            <h2 className="section-title">{t.events.citiesTitle}</h2>
+          </FadeUp>
+
+          <div className="mt-14 space-y-6">
+            {cities.map((c, i) => {
+              const targetDate = new Date(c.iso).getTime();
+              const now = new Date().getTime();
+              const daysLeft = Math.max(0, Math.ceil((targetDate - now) / (1000 * 60 * 60 * 24)));
+
+              return (
+                <FadeUp key={c.name} delay={i * 0.12}>
+                  <div className="relative overflow-hidden rounded-sm">
+                    {/* Full-width background image */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: `url('${c.img}') center/cover no-repeat` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+
+                    {/* Match number watermark */}
+                    <div className="absolute top-0 right-4 md:right-8 pointer-events-none">
+                      <span className="font-bebas text-[8rem] md:text-[12rem] leading-none text-white/[0.05]">0{i + 1}</span>
                     </div>
-                    <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">{c.match}</p>
-                    <p className="font-barlow-cond text-xs uppercase tracking-wider text-white/50 mt-1">{c.dates} · {c.time}</p>
+
+                    {/* Content */}
+                    <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6">
+                      {/* Left: info */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="font-barlow-cond font-bold text-[0.65rem] uppercase tracking-[0.3em] text-cv-gold/70">{t.events.groupH} · MATCH {i + 1}</span>
+                          {c.badge && (
+                            <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-3 py-1 text-white">{c.badge}</span>
+                          )}
+                        </div>
+
+                        <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.2em] text-cv-red">{c.tag}</p>
+
+                        <h3 className="font-bebas text-5xl md:text-6xl mt-1">{c.name}</h3>
+
+                        {/* Match + flags */}
+                        <div className="flex items-center gap-3 mt-3">
+                          <span className="text-3xl">{c.flag}</span>
+                          <p className="font-bebas text-xl md:text-2xl text-cv-gold">{c.match}</p>
+                        </div>
+
+                        <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-white/60 mt-2">{c.dates} · {c.time}</p>
+
+                        <p className="text-white/75 text-sm mt-4 max-w-xl leading-relaxed">{c.desc}</p>
+
+                        <div className="mt-6">
+                          <Link href="#registration" className="btn-primary">{t.events.bookNow}</Link>
+                        </div>
+                      </div>
+
+                      {/* Right: countdown */}
+                      <div className="shrink-0 flex flex-col items-center justify-center border border-cv-gold/30 bg-black/40 backdrop-blur-sm px-8 py-6 md:px-10 md:py-8">
+                        <p className="font-bebas text-5xl md:text-6xl text-cv-gold leading-none">{daysLeft}</p>
+                        <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.2em] text-white/60 mt-2">{t.events.daysLeft}</p>
+                      </div>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: i === 1 ? "#CF2027" : "#F5A623" }} />
                   </div>
-                  <p className="text-white/75 text-sm max-w-xl leading-relaxed">{c.desc}</p>
-                  <div className="mt-auto pt-2">
-                    <Link href="#registration" className="btn-primary shrink-0 text-center">{t.events.bookNow}</Link>
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
+                </FadeUp>
+              );
+            })}
+          </div>
         </div>
       </section>
 
