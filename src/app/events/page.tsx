@@ -71,44 +71,61 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── CITY CARDS (enhanced) ── */}
-      <section className="bg-navy py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {cities.map((c, i) => (
-            <FadeUp key={c.name} delay={i * 0.1}>
-              <div className={`border-l-[3px] ${c.border} flex flex-col md:flex-row overflow-hidden bg-white/[0.04]`}>
-                {/* City image */}
-                <div
-                  className="w-full md:w-64 h-52 md:h-auto shrink-0 relative"
-                  style={{ background: `url('${c.img}') center/cover no-repeat` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 md:to-transparent" />
-                  <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
-                    <span className="text-2xl">{c.flag}</span>
-                  </div>
+      {/* ── CITY SLIDES — full-width immersive sections ── */}
+      {cities.map((c, i) => (
+        <section
+          key={c.name}
+          className="relative min-h-[85vh] flex items-end overflow-hidden"
+          style={{
+            background: `linear-gradient(to top, rgba(3,13,24,0.95) 0%, rgba(3,13,24,0.55) 40%, rgba(3,13,24,0.25) 100%), url('${c.img}') center/cover no-repeat`,
+          }}
+        >
+          {/* Match number badge */}
+          <div className="absolute top-20 right-6 md:right-12">
+            <p className="font-bebas text-[6rem] md:text-[10rem] leading-none text-white/[0.06]">0{i + 1}</p>
+          </div>
+
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pb-16 pt-32">
+            <FadeUp>
+              {/* Group label */}
+              <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.3em] text-cv-gold/80 mb-3">
+                FIFA World Cup 2026 · Group H · Match {i + 1}
+              </p>
+
+              {/* Tagline */}
+              <p className="font-barlow-cond font-bold text-sm md:text-base uppercase tracking-[0.2em] text-cv-red mb-2">{c.tag}</p>
+
+              {/* City name */}
+              <h2 className="font-bebas leading-[0.9]" style={{ fontSize: "clamp(4rem, 12vw, 9rem)" }}>
+                {c.name}
+              </h2>
+
+              {/* Match + flags */}
+              <div className="mt-4 flex items-center gap-4">
+                <span className="text-4xl md:text-5xl">{c.flag}</span>
+                <div>
+                  <p className="font-bebas text-2xl md:text-3xl text-cv-gold">{c.match}</p>
+                  <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-white/70">{c.dates} · {c.time}</p>
                 </div>
-                <div className="flex-1 p-6 md:p-8 flex flex-col gap-3">
-                  <div>
-                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.2em] text-cv-red">{c.tag}</p>
-                    <div className="flex items-center gap-3 mt-1">
-                      <h3 className="font-bebas text-4xl">{c.name}</h3>
-                      {c.badge && (
-                        <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-3 py-1 text-white">{c.badge}</span>
-                      )}
-                    </div>
-                    <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">{c.match}</p>
-                    <p className="font-barlow-cond text-xs uppercase tracking-wider text-white/50 mt-1">{c.dates} · {c.time}</p>
-                  </div>
-                  <p className="text-white/75 text-sm max-w-xl leading-relaxed">{c.desc}</p>
-                  <div className="mt-auto pt-2">
-                    <Link href="#registration" className="btn-primary shrink-0 text-center">{t.events.bookNow}</Link>
-                  </div>
-                </div>
+                {c.badge && (
+                  <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-4 py-1.5 text-white ml-2">{c.badge}</span>
+                )}
+              </div>
+
+              {/* Description */}
+              <p className="mt-6 max-w-2xl text-white/80 text-base leading-relaxed">{c.desc}</p>
+
+              {/* CTA */}
+              <div className="mt-8">
+                <Link href="#registration" className="btn-primary">{t.events.bookNow}</Link>
               </div>
             </FadeUp>
-          ))}
-        </div>
-      </section>
+          </div>
+
+          {/* Bottom gradient line */}
+          <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: i === 1 ? "#CF2027" : "#F5A623" }} />
+        </section>
+      ))}
 
       {/* ── ZONES ── */}
       <section className="bg-dark py-20 px-6 md:px-12">
