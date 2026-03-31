@@ -152,46 +152,62 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
-          {/* Packages row */}
+          {/* Ticket tiers row */}
           <div className="mt-16 grid md:grid-cols-3 gap-px">
             <FadeUp delay={0.3}>
-              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
-                <h3 className="font-bebas text-2xl">{t.events.packageFromPraia}</h3>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full flex flex-col">
+                <h3 className="font-bebas text-2xl">{t.events.vipDiplomatic}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">{t.events.vipDiplomaticSub}</p>
                 <div className="ticket-dash my-4 w-full" />
-                <ul className="space-y-1 text-white/80 text-sm">
-                  <li>{t.events.fourNights}</li>
-                  <li>{t.events.flightPraiaMiami}</li>
-                  <li>{t.events.ticketStandard}</li>
-                  <li>{t.events.ticketBusiness}</li>
-                  <li>{t.events.ticketVip}</li>
+                <div className="flex gap-4 mb-4">
+                  <div><p className="text-white/50 text-xs">ATL</p><p className="font-bebas text-xl text-cv-gold">$399</p></div>
+                  <div><p className="text-white/50 text-xs">MIA</p><p className="font-bebas text-xl text-cv-gold">$499</p></div>
+                  <div><p className="text-white/50 text-xs">HOU</p><p className="font-bebas text-xl text-cv-gold">$399</p></div>
+                </div>
+                <ul className="space-y-1 text-white/70 text-sm flex-1">
+                  <li>{t.events.vipF1}</li>
+                  <li>{t.events.vipF4}</li>
+                  <li>{t.events.vipF5}</li>
+                  <li>{t.events.vipF7}</li>
                 </ul>
-                <p className="mt-4 font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold">
-                  {t.events.estimatedVipCost}
-                </p>
+                <Link href="/events" className="btn-primary mt-6 text-center">{t.home.learnMore}</Link>
               </div>
             </FadeUp>
             <FadeUp delay={0.4}>
-              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full">
-                <h3 className="font-bebas text-2xl">{t.events.charterTitle}</h3>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full flex flex-col">
+                <h3 className="font-bebas text-2xl">{t.events.business}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">{t.events.businessSub}</p>
                 <div className="ticket-dash my-4 w-full" />
-                <ul className="space-y-1 text-white/80 text-sm">
-                  <li>{t.events.charterDates}</li>
-                  <li>{t.events.doubleRoomHotel}</li>
-                  <li>{t.events.eventRange}</li>
+                <div className="flex gap-4 mb-4">
+                  <div><p className="text-white/50 text-xs">ATL</p><p className="font-bebas text-xl text-cv-gold">$199</p></div>
+                  <div><p className="text-white/50 text-xs">MIA</p><p className="font-bebas text-xl text-cv-gold">$249</p></div>
+                  <div><p className="text-white/50 text-xs">HOU</p><p className="font-bebas text-xl text-cv-gold">$199</p></div>
+                </div>
+                <ul className="space-y-1 text-white/70 text-sm flex-1">
+                  <li>{t.events.bizF1}</li>
+                  <li>{t.events.bizF2}</li>
+                  <li>{t.events.bizF4}</li>
+                  <li>{t.events.bizF7}</li>
                 </ul>
+                <Link href="/events" className="btn-primary mt-6 text-center">{t.home.learnMore}</Link>
               </div>
             </FadeUp>
             <FadeUp delay={0.5}>
-              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bebas text-2xl">TICKETS</h3>
-                  <div className="ticket-dash my-4 w-full" />
-                  <ul className="space-y-1 text-white/80 text-sm">
-                    <li>Standard Fan — $65 / $79</li>
-                    <li>Business — $199 / $249</li>
-                    <li>VIP Diplomatic — $399 / $499</li>
-                  </ul>
+              <div className="border border-cv-gold/40 bg-black/40 backdrop-blur-sm p-8 h-full flex flex-col">
+                <h3 className="font-bebas text-2xl">{t.events.standardFan}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">{t.events.standardFanSub}</p>
+                <div className="ticket-dash my-4 w-full" />
+                <div className="flex gap-4 mb-4">
+                  <div><p className="text-white/50 text-xs">ATL</p><p className="font-bebas text-xl text-cv-gold">$65</p></div>
+                  <div><p className="text-white/50 text-xs">MIA</p><p className="font-bebas text-xl text-cv-gold">$79</p></div>
+                  <div><p className="text-white/50 text-xs">HOU</p><p className="font-bebas text-xl text-cv-gold">$65</p></div>
                 </div>
+                <ul className="space-y-1 text-white/70 text-sm flex-1">
+                  <li>{t.events.stdF1}</li>
+                  <li>{t.events.stdF4}</li>
+                  <li>{t.events.stdF5}</li>
+                  <li>{t.events.stdF7}</li>
+                </ul>
                 <Link href="/events" className="btn-primary mt-6 text-center">{t.home.learnMore}</Link>
               </div>
             </FadeUp>
