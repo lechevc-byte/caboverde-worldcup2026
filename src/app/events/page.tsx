@@ -96,7 +96,7 @@ export default function EventsPage() {
                       className="absolute inset-0"
                       style={{ background: `url('${c.img}') center/cover no-repeat` }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/15" />
 
                     {/* Match number watermark */}
                     <div className="absolute top-0 right-4 md:right-8 pointer-events-none">
