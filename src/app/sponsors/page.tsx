@@ -15,20 +15,56 @@ export default function SponsorsPage() {
   ];
 
   const packages = [
-    { name: t.sponsors.platinum, price: t.sponsors.platPrice, slots: t.sponsors.platSlots, color: "#B0C0D0", features: [t.sponsors.platF1, t.sponsors.platF2, t.sponsors.platF3, t.sponsors.platF4, t.sponsors.platF5, t.sponsors.platF6, t.sponsors.platF7, t.sponsors.platF8] },
-    { name: t.sponsors.gold, price: t.sponsors.goldPrice, slots: t.sponsors.goldSlots, color: "#F5A623", features: [t.sponsors.goldF1, t.sponsors.goldF2, t.sponsors.goldF3, t.sponsors.goldF4, t.sponsors.goldF5, t.sponsors.goldF6, t.sponsors.goldF7] },
-    { name: t.sponsors.silver, price: t.sponsors.silverPrice, slots: t.sponsors.silverSlots, color: "#98aab8", features: [t.sponsors.silverF1, t.sponsors.silverF2, t.sponsors.silverF3, t.sponsors.silverF4, t.sponsors.silverF5] },
-    { name: t.sponsors.bronze, price: t.sponsors.bronzePrice, slots: t.sponsors.bronzeSlots, color: "#c0783a", features: [t.sponsors.bronzeF1, t.sponsors.bronzeF2, t.sponsors.bronzeF3, t.sponsors.bronzeF4] },
+    {
+      name: t.sponsors.platinum,
+      label: t.sponsors.platLabel,
+      price: t.sponsors.platPrice,
+      priceAll: t.sponsors.platPriceAll,
+      slots: t.sponsors.platSlots,
+      color: "#B0C0D0",
+      features: [t.sponsors.platF1, t.sponsors.platF2, t.sponsors.platF3, t.sponsors.platF4, t.sponsors.platF5, t.sponsors.platF6, t.sponsors.platF7, t.sponsors.platF8, t.sponsors.platF9, t.sponsors.platF10],
+      ideal: t.sponsors.platIdeal,
+    },
+    {
+      name: t.sponsors.gold,
+      label: t.sponsors.goldLabel,
+      price: t.sponsors.goldPrice,
+      priceAll: t.sponsors.goldPriceAll,
+      slots: t.sponsors.goldSlots,
+      color: "#F5A623",
+      features: [t.sponsors.goldF1, t.sponsors.goldF2, t.sponsors.goldF3, t.sponsors.goldF4, t.sponsors.goldF5, t.sponsors.goldF6, t.sponsors.goldF7, t.sponsors.goldF8],
+      ideal: t.sponsors.goldIdeal,
+    },
+    {
+      name: t.sponsors.silver,
+      label: t.sponsors.silverLabel,
+      price: t.sponsors.silverPrice,
+      priceAll: t.sponsors.silverPriceAll,
+      slots: t.sponsors.silverSlots,
+      color: "#98aab8",
+      features: [t.sponsors.silverF1, t.sponsors.silverF2, t.sponsors.silverF3, t.sponsors.silverF4, t.sponsors.silverF5, t.sponsors.silverF6],
+      ideal: t.sponsors.silverIdeal,
+    },
+    {
+      name: t.sponsors.bronze,
+      label: t.sponsors.bronzeLabel,
+      price: t.sponsors.bronzePrice,
+      priceAll: t.sponsors.bronzePriceAll,
+      slots: t.sponsors.bronzeSlots,
+      color: "#c0783a",
+      features: [t.sponsors.bronzeF1, t.sponsors.bronzeF2, t.sponsors.bronzeF3, t.sponsors.bronzeF4, t.sponsors.bronzeF5],
+      ideal: t.sponsors.bronzeIdeal,
+    },
   ];
 
   const compareRows = [
     { label: t.sponsors.cNaming, plat: true, gold: true, silver: false, bronze: false },
     { label: t.sponsors.cLogo, plat: true, gold: false, silver: false, bronze: false },
-    { label: t.sponsors.cScreens, plat: true, gold: true, silver: false, bronze: false },
+    { label: t.sponsors.cScreens, plat: true, gold: true, silver: true, bronze: false },
     { label: t.sponsors.cDigital, plat: true, gold: true, silver: true, bronze: true },
     { label: t.sponsors.cStage, plat: true, gold: false, silver: false, bronze: false },
-    { label: t.sponsors.cVip, plat: true, gold: true, silver: false, bronze: false },
-    { label: t.sponsors.cInvitations, plat: true, gold: true, silver: true, bronze: true },
+    { label: t.sponsors.cVip, plat: "12", gold: "8", silver: false, bronze: false },
+    { label: t.sponsors.cInvitations, plat: true, gold: true, silver: "10", bronze: "5" },
     { label: t.sponsors.cDelegation, plat: true, gold: true, silver: false, bronze: false },
     { label: t.sponsors.cDealRoom, plat: true, gold: true, silver: true, bronze: true },
     { label: t.sponsors.cLegacy, plat: true, gold: true, silver: false, bronze: false },
@@ -88,8 +124,10 @@ export default function SponsorsPage() {
               <FadeUp key={p.name} delay={i * 0.1}>
                 <div className="border border-cv-gold/25 p-6 h-full flex flex-col relative">
                   <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: p.color }} />
-                  <h3 className="font-bebas text-2xl mt-2">{p.name}</h3>
+                  <p className="font-barlow-cond font-bold text-[0.65rem] uppercase tracking-[0.15em] text-white/40 mt-2">{p.label}</p>
+                  <h3 className="font-bebas text-2xl mt-1">{p.name}</h3>
                   <p className="font-bebas text-xl text-cv-gold mt-1">{p.price}</p>
+                  <p className="font-barlow-cond text-sm text-cv-gold/70">{p.priceAll}</p>
                   <p className="font-barlow-cond text-xs uppercase tracking-wider text-white/60 mt-1">{p.slots}</p>
                   <ul className="mt-6 space-y-2 flex-1">
                     {p.features.map((f) => (
@@ -98,7 +136,8 @@ export default function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="#contact-sponsor" className="btn-secondary mt-6 text-center text-sm">{t.sponsors.apply}</Link>
+                  <p className="mt-4 text-white/40 text-xs italic">Ideal: {p.ideal}</p>
+                  <Link href="#contact-sponsor" className="btn-secondary mt-4 text-center text-sm">{t.sponsors.apply}</Link>
                 </div>
               </FadeUp>
             ))}
@@ -112,10 +151,10 @@ export default function SponsorsPage() {
           <FadeUp>
             <div className="border border-cv-gold/25 p-8 md:p-10 relative">
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "#F5A623" }} />
-              <h3 className="font-bebas text-3xl mt-2">ACTIVATION SPONSORS — ~5K$</h3>
+              <h3 className="font-bebas text-3xl mt-2">ACTIVATION SPONSORS — ~$5K</h3>
               <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">Experience Partners</p>
               <p className="text-white/70 text-sm mt-2">Special category for interactive sponsor activations</p>
-              <p className="font-bebas text-xl text-cv-gold mt-4">€5,000 <span className="text-white/60 text-sm font-barlow">depending on activation</span></p>
+              <p className="font-bebas text-xl text-cv-gold mt-4">$5,000 <span className="text-white/60 text-sm font-barlow">depending on activation</span></p>
 
               <div className="mt-8">
                 <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-white/60 mb-3">Examples</p>
@@ -177,7 +216,13 @@ export default function SponsorsPage() {
                       <td className="py-3 pr-4 text-white/75">{r.label}</td>
                       {[r.plat, r.gold, r.silver, r.bronze].map((v, j) => (
                         <td key={j} className="py-3 px-4 text-center">
-                          {v ? <span className="text-cv-gold">&#10022;</span> : <span className="text-white/25">&ndash;</span>}
+                          {typeof v === "string" ? (
+                            <span className="text-cv-gold font-barlow-cond font-bold text-xs">{v}</span>
+                          ) : v ? (
+                            <span className="text-cv-gold">&#10022;</span>
+                          ) : (
+                            <span className="text-white/25">&ndash;</span>
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -204,10 +249,10 @@ export default function SponsorsPage() {
               <input type="tel" placeholder={t.sponsors.phone} />
               <select>
                 <option value="">{t.sponsors.desiredPackage}</option>
-                <option>Platinum — $50K</option>
-                <option>Gold — $25K</option>
-                <option>Silver — $10K</option>
-                <option>Bronze — $5K</option>
+                <option>Platinum — $75K</option>
+                <option>Gold — $35K</option>
+                <option>Silver — $15K</option>
+                <option>Bronze — $7.5K</option>
                 <option>Activation — ~$5K</option>
               </select>
               <div className="sm:col-span-2">

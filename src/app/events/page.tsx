@@ -10,24 +10,36 @@ export default function EventsPage() {
   const cities = [
     {
       name: "ATLANTA",
+      flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1EA}\u{1F1F8}",
       dates: "June 15, 2026",
+      time: "12:00 PM ET",
       border: "border-cv-gold",
+      tag: t.events.atlantaTag,
+      match: t.events.atlantaMatch,
       desc: t.events.atlantaDesc,
       badge: null,
       img: "/img/atlanta.png",
     },
     {
       name: "MIAMI",
+      flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1FA}\u{1F1FE}",
       dates: "June 20-21, 2026",
+      time: "6:00 PM ET",
       border: "border-cv-red",
+      tag: t.events.miamiTag,
+      match: t.events.miamiMatch,
       desc: t.events.miamiDesc,
       badge: t.events.badge2days,
       img: "/img/miami.jpg",
     },
     {
       name: "HOUSTON",
-      dates: "June 26, 2026",
+      flag: "\u{1F1E8}\u{1F1FB} vs \u{1F1F8}\u{1F1E6}",
+      dates: "June 25-26, 2026",
+      time: "TBD",
       border: "border-cv-gold",
+      tag: t.events.houstonTag,
+      match: t.events.houstonMatch,
       desc: t.events.houstonDesc,
       badge: null,
       img: "/img/houston.jpg",
@@ -59,29 +71,38 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── CITY CARDS ── */}
+      {/* ── CITY CARDS (enhanced) ── */}
       <section className="bg-navy py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-6">
+        <div className="max-w-7xl mx-auto space-y-8">
           {cities.map((c, i) => (
             <FadeUp key={c.name} delay={i * 0.1}>
               <div className={`border-l-[3px] ${c.border} flex flex-col md:flex-row overflow-hidden bg-white/[0.04]`}>
                 {/* City image */}
                 <div
-                  className="w-full md:w-56 h-44 md:h-auto shrink-0"
+                  className="w-full md:w-64 h-52 md:h-auto shrink-0 relative"
                   style={{ background: `url('${c.img}') center/cover no-repeat` }}
-                />
-                <div className="flex-1 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-bebas text-3xl">{c.name}</h3>
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 md:to-transparent" />
+                  <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                    <span className="text-2xl">{c.flag}</span>
+                  </div>
+                </div>
+                <div className="flex-1 p-6 md:p-8 flex flex-col gap-3">
+                  <div>
+                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-[0.2em] text-cv-red">{c.tag}</p>
+                    <div className="flex items-center gap-3 mt-1">
+                      <h3 className="font-bebas text-4xl">{c.name}</h3>
                       {c.badge && (
                         <span className="font-barlow-cond font-bold text-xs uppercase tracking-wider bg-cv-red px-3 py-1 text-white">{c.badge}</span>
                       )}
                     </div>
-                    <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">{c.dates}</p>
-                    <p className="text-white/75 text-sm mt-2 max-w-lg leading-relaxed">{c.desc}</p>
+                    <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold mt-1">{c.match}</p>
+                    <p className="font-barlow-cond text-xs uppercase tracking-wider text-white/50 mt-1">{c.dates} · {c.time}</p>
                   </div>
-                  <Link href="#registration" className="btn-primary shrink-0 text-center">{t.events.bookNow}</Link>
+                  <p className="text-white/75 text-sm max-w-xl leading-relaxed">{c.desc}</p>
+                  <div className="mt-auto pt-2">
+                    <Link href="#registration" className="btn-primary shrink-0 text-center">{t.events.bookNow}</Link>
+                  </div>
                 </div>
               </div>
             </FadeUp>
@@ -120,30 +141,35 @@ export default function EventsPage() {
 
           {/* Row 1 — 3 main tickets */}
           <div className="mt-12 grid md:grid-cols-3 gap-px">
-            {/* VIP Lounge */}
+            {/* VIP Diplomatic */}
             <FadeUp delay={0}>
               <div className="ticket-card border border-cv-gold/50 bg-white/[0.04] p-8 flex flex-col relative overflow-hidden h-full">
                 <span className="absolute top-0 right-0 bg-cv-red text-white font-barlow-cond font-bold text-xs uppercase tracking-wider px-3 py-1">Limited</span>
-                <h3 className="font-bebas text-3xl">VIP LOUNGE</h3>
-                <div className="mt-4 flex gap-6">
+                <h3 className="font-bebas text-3xl">{t.events.vipDiplomatic}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">{t.events.vipDiplomaticSub}</p>
+                <p className="text-white/50 text-xs mt-1">{t.events.vipDiplomaticDesc}</p>
+                <div className="mt-4 flex gap-4">
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$300</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$399</p>
                   </div>
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$350</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$499</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Houston</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$399</p>
                   </div>
                 </div>
                 <div className="ticket-dash my-6 w-full" />
                 <ul className="space-y-2 flex-1">
-                  {["Full access all zones", "VIP lounge", "Priority seating", "Gift pack", "Private networking", "Potential player/delegation proximity"].map((f) => (
+                  {[t.events.vipF1, t.events.vipF2, t.events.vipF3, t.events.vipF4, t.events.vipF5, t.events.vipF6, t.events.vipF7, t.events.vipF8].map((f) => (
                     <li key={f} className="text-white/75 text-sm flex items-start gap-2">
                       <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
                     </li>
                   ))}
                 </ul>
-                <p className="text-white/50 text-xs mt-4 italic">Target: HNWIs, Executives, Sponsors, Diaspora leaders</p>
                 <Link href="#registration" className="btn-primary mt-6 text-center">{t.events.bookNow}</Link>
               </div>
             </FadeUp>
@@ -151,84 +177,72 @@ export default function EventsPage() {
             {/* Business */}
             <FadeUp delay={0.1}>
               <div className="ticket-card border border-white/15 p-8 flex flex-col h-full">
-                <h3 className="font-bebas text-3xl">BUSINESS</h3>
-                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">Investment &amp; Networking</p>
-                <div className="mt-4 flex gap-6">
+                <h3 className="font-bebas text-3xl">{t.events.business}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">{t.events.businessSub}</p>
+                <p className="text-white/50 text-xs mt-1">{t.events.businessDesc}</p>
+                <div className="mt-4 flex gap-4">
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$150</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$199</p>
                   </div>
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$180</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$249</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Houston</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$199</p>
                   </div>
                 </div>
                 <div className="ticket-dash my-6 w-full" />
                 <ul className="space-y-2 flex-1">
-                  {["Business & Deal Room access", "Structured networking", "Main stage access"].map((f) => (
+                  {[t.events.bizF1, t.events.bizF2, t.events.bizF3, t.events.bizF4, t.events.bizF5, t.events.bizF6, t.events.bizF7].map((f) => (
                     <li key={f} className="text-white/75 text-sm flex items-start gap-2">
                       <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
                     </li>
                   ))}
                 </ul>
-                <p className="text-white/50 text-xs mt-4 italic">Target: Entrepreneurs, SMEs, Professionals, Investors</p>
                 <Link href="#registration" className="btn-secondary mt-6 text-center">{t.events.bookNow}</Link>
               </div>
             </FadeUp>
 
-            {/* Standard */}
+            {/* Standard Fan */}
             <FadeUp delay={0.2}>
               <div className="ticket-card border border-white/15 p-8 flex flex-col h-full">
-                <h3 className="font-bebas text-3xl">STANDARD</h3>
-                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">Experience Access</p>
-                <div className="mt-4 flex gap-6">
+                <h3 className="font-bebas text-3xl">{t.events.standardFan}</h3>
+                <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold mt-1">{t.events.standardFanSub}</p>
+                <p className="text-white/50 text-xs mt-1">{t.events.standardFanDesc}</p>
+                <div className="mt-4 flex gap-4">
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Atlanta</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$50</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$65</p>
                   </div>
                   <div>
                     <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Miami</p>
-                    <p className="font-bebas text-2xl text-cv-gold">$60</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$79</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase font-barlow-cond tracking-wider">Houston</p>
+                    <p className="font-bebas text-2xl text-cv-gold">$65</p>
                   </div>
                 </div>
                 <div className="ticket-dash my-6 w-full" />
                 <ul className="space-y-2 flex-1">
-                  {["Main stage", "Smart Experience Zone", "Cultural activations"].map((f) => (
+                  {[t.events.stdF1, t.events.stdF2, t.events.stdF3, t.events.stdF4, t.events.stdF5, t.events.stdF6, t.events.stdF7].map((f) => (
                     <li key={f} className="text-white/75 text-sm flex items-start gap-2">
                       <span className="text-cv-gold mt-0.5">&#10022;</span> {f}
                     </li>
                   ))}
                 </ul>
-                <p className="text-white/50 text-xs mt-4 italic">Target: Diaspora general audience, Young professionals, Community</p>
                 <Link href="#registration" className="btn-secondary mt-6 text-center">{t.events.bookNow}</Link>
               </div>
             </FadeUp>
           </div>
 
-          {/* Row 2 — 3 extra blocks */}
-          <div className="mt-px grid md:grid-cols-3 gap-px">
-            {/* VIP Table Packages */}
-            <FadeUp delay={0.3}>
-              <div className="border border-cv-gold/25 p-8 h-full">
-                <h3 className="font-bebas text-2xl">VIP TABLE PACKAGES</h3>
-                <div className="ticket-dash my-4 w-full" />
-                <div className="space-y-3">
-                  <div>
-                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">Atlanta</p>
-                    <p className="text-white/75 text-sm mt-1">5 seats — $1,500</p>
-                    <p className="text-white/75 text-sm">10 seats — $3,000</p>
-                  </div>
-                  <div>
-                    <p className="font-barlow-cond font-bold text-xs uppercase tracking-wider text-cv-gold">Miami</p>
-                    <p className="text-white/75 text-sm mt-1">5 seats — $2,000</p>
-                    <p className="text-white/75 text-sm">10 seats — $4,000</p>
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-
+          {/* Row 2 — Package from Praia + Charter */}
+          <div className="mt-px grid md:grid-cols-2 gap-px">
             {/* Package from Praia */}
-            <FadeUp delay={0.4}>
+            <FadeUp delay={0.3}>
               <div className="border border-cv-gold/25 p-8 h-full">
                 <h3 className="font-bebas text-2xl">{t.events.packageFromPraia}</h3>
                 <div className="ticket-dash my-4 w-full" />
@@ -247,7 +261,7 @@ export default function EventsPage() {
             </FadeUp>
 
             {/* Charter flight */}
-            <FadeUp delay={0.5}>
+            <FadeUp delay={0.4}>
               <div className="border border-cv-gold/25 p-8 h-full">
                 <h3 className="font-bebas text-2xl">{t.events.charterTitle}</h3>
                 <div className="ticket-dash my-4 w-full" />
@@ -278,12 +292,15 @@ export default function EventsPage() {
               <input type="text" placeholder={t.events.city} />
               <select required className="sm:col-span-2">
                 <option value="">{t.events.ticketType}</option>
-                <option>Standard — Atlanta ($50)</option>
-                <option>Standard — Miami ($60)</option>
-                <option>Business — Atlanta ($150)</option>
-                <option>Business — Miami ($180)</option>
-                <option>VIP — Atlanta ($300)</option>
-                <option>VIP — Miami ($350)</option>
+                <option>Standard Fan — Atlanta ($65)</option>
+                <option>Standard Fan — Miami ($79)</option>
+                <option>Standard Fan — Houston ($65)</option>
+                <option>Business — Atlanta ($199)</option>
+                <option>Business — Miami ($249)</option>
+                <option>Business — Houston ($199)</option>
+                <option>VIP Diplomatic — Atlanta ($399)</option>
+                <option>VIP Diplomatic — Miami ($499)</option>
+                <option>VIP Diplomatic — Houston ($399)</option>
               </select>
               <select className="sm:col-span-2">
                 <option value="">{t.events.comingFrom}</option>

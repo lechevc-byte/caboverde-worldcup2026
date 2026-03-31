@@ -26,9 +26,9 @@ export default function Home() {
   ];
 
   const countdowns = [
-    { city: "ATLANTA", date: "June 15, 2026", detail: t.home.atlantaDetail },
-    { city: "MIAMI", date: "June 20-21, 2026", detail: t.home.miamiDetail },
-    { city: "HOUSTON", date: "June 26, 2026", detail: t.home.houstonDetail },
+    { city: "ATLANTA", date: "June 15, 2026", match: "\u{1F1E8}\u{1F1FB} vs \u{1F1EA}\u{1F1F8}", detail: t.home.atlantaDetail },
+    { city: "MIAMI", date: "June 20-21, 2026", match: "\u{1F1E8}\u{1F1FB} vs \u{1F1FA}\u{1F1FE}", detail: t.home.miamiDetail },
+    { city: "HOUSTON", date: "June 25-26, 2026", match: "\u{1F1E8}\u{1F1FB} vs \u{1F1F8}\u{1F1E6}", detail: t.home.houstonDetail },
   ];
 
   return (
@@ -99,7 +99,8 @@ export default function Home() {
             <div key={c.city} className="border-l-[3px] border-cv-gold pl-5">
               <p className="font-bebas text-2xl text-cv-gold">{c.city}</p>
               <p className="font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-white mt-1">{c.date}</p>
-              <p className="text-white/70 text-sm mt-1">{c.detail}</p>
+              <p className="text-white/80 text-sm mt-1">{c.match}</p>
+              <p className="text-white/60 text-xs mt-1">{c.detail}</p>
             </div>
           ))}
         </div>
@@ -186,9 +187,9 @@ export default function Home() {
                   <h3 className="font-bebas text-2xl">TICKETS</h3>
                   <div className="ticket-dash my-4 w-full" />
                   <ul className="space-y-1 text-white/80 text-sm">
-                    <li>Standard — $50 / $60</li>
-                    <li>Business — $150 / $180</li>
-                    <li>VIP Lounge — $300 / $350</li>
+                    <li>Standard Fan — $65 / $79</li>
+                    <li>Business — $199 / $249</li>
+                    <li>VIP Diplomatic — $399 / $499</li>
                   </ul>
                 </div>
                 <Link href="/events" className="btn-primary mt-6 text-center">{t.home.learnMore}</Link>
