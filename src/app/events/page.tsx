@@ -239,40 +239,6 @@ export default function EventsPage() {
             </FadeUp>
           </div>
 
-          {/* Row 2 — Package from Praia + Charter */}
-          <div className="mt-px grid md:grid-cols-2 gap-px">
-            {/* Package from Praia */}
-            <FadeUp delay={0.3}>
-              <div className="border border-cv-gold/25 p-8 h-full">
-                <h3 className="font-bebas text-2xl">{t.events.packageFromPraia}</h3>
-                <div className="ticket-dash my-4 w-full" />
-                <ul className="space-y-1 text-white/75 text-sm">
-                  <li>{t.events.fourNights}</li>
-                  <li>{t.events.flightPraiaMiami}</li>
-                  <li>{t.events.ticketStandard}</li>
-                  <li>{t.events.ticketBusiness}</li>
-                  <li>{t.events.ticketVip}</li>
-                  <li>{t.events.booth}</li>
-                </ul>
-                <p className="mt-4 font-barlow-cond font-bold text-sm uppercase tracking-wider text-cv-gold">
-                  {t.events.estimatedVipCost}
-                </p>
-              </div>
-            </FadeUp>
-
-            {/* Charter flight */}
-            <FadeUp delay={0.4}>
-              <div className="border border-cv-gold/25 p-8 h-full">
-                <h3 className="font-bebas text-2xl">{t.events.charterTitle}</h3>
-                <div className="ticket-dash my-4 w-full" />
-                <ul className="space-y-1 text-white/75 text-sm">
-                  <li>{t.events.charterDates}</li>
-                  <li>{t.events.doubleRoomHotel}</li>
-                  <li>{t.events.eventRange}</li>
-                </ul>
-              </div>
-            </FadeUp>
-          </div>
         </div>
       </section>
 
